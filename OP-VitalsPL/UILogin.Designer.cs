@@ -28,33 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonlogin = new System.Windows.Forms.Button();
+            this.textBoxID = new System.Windows.Forms.TextBox();
+            this.textBoxCodeWord = new System.Windows.Forms.TextBox();
+            this.EmployeeID = new System.Windows.Forms.Label();
+            this.code = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonlogin
             // 
-            this.button1.Location = new System.Drawing.Point(117, 169);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonlogin.Location = new System.Drawing.Point(112, 143);
+            this.buttonlogin.Name = "buttonlogin";
+            this.buttonlogin.Size = new System.Drawing.Size(81, 27);
+            this.buttonlogin.TabIndex = 0;
+            this.buttonlogin.Text = "Login";
+            this.buttonlogin.UseVisualStyleBackColor = true;
+            this.buttonlogin.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBoxID
+            // 
+            this.textBoxID.Location = new System.Drawing.Point(112, 35);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.Size = new System.Drawing.Size(100, 20);
+            this.textBoxID.TabIndex = 1;
+            // 
+            // textBoxCodeWord
+            // 
+            this.textBoxCodeWord.Location = new System.Drawing.Point(112, 77);
+            this.textBoxCodeWord.Name = "textBoxCodeWord";
+            this.textBoxCodeWord.PasswordChar = '*';
+            this.textBoxCodeWord.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCodeWord.TabIndex = 2;
+            // 
+            // EmployeeID
+            // 
+            this.EmployeeID.AutoSize = true;
+            this.EmployeeID.Location = new System.Drawing.Point(26, 38);
+            this.EmployeeID.Name = "EmployeeID";
+            this.EmployeeID.Size = new System.Drawing.Size(77, 13);
+            this.EmployeeID.TabIndex = 3;
+            this.EmployeeID.Text = "Medarbejder id";
+            this.EmployeeID.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // code
+            // 
+            this.code.AutoSize = true;
+            this.code.Location = new System.Drawing.Point(29, 77);
+            this.code.Name = "code";
+            this.code.Size = new System.Drawing.Size(47, 13);
+            this.code.TabIndex = 4;
+            this.code.Text = "Kodeord";
             // 
             // UILogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(291, 218);
+            this.Controls.Add(this.code);
+            this.Controls.Add(this.EmployeeID);
+            this.Controls.Add(this.textBoxCodeWord);
+            this.Controls.Add(this.textBoxID);
+            this.Controls.Add(this.buttonlogin);
             this.Name = "UILogin";
-            this.Text = "UILogin";
+            this.Text = "Login";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonlogin;
+        private System.Windows.Forms.TextBox textBoxID;
+        private System.Windows.Forms.TextBox textBoxCodeWord;
+        private System.Windows.Forms.Label EmployeeID;
+        private System.Windows.Forms.Label code;
     }
 }

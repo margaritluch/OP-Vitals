@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CtrlOP-VitalsDAL.cs" />
+    <Compile Include="KliniskDatabase.cs" />
+    <Compile Include="MedarbejderDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,7 @@ namespace Interfaces
 {
     public interface iOPVitalsDAL
     {
-        
+        bool ValiderLogin(int id, string kodeord);
     }
 
     public interface iOPVitalsBL
