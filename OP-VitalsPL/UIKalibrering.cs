@@ -7,18 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 using System.Windows.Forms.Design;
+
 
 namespace OP_VitalsPL
 {
-    public partial class UILogin : Form
+    public partial class UIKalibrering : Form
     {
-        public UILogin()
+        public UIKalibrering()
         {
             InitializeComponent();
         }
 
-        private void UILogin_Load(object sender, EventArgs e)
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

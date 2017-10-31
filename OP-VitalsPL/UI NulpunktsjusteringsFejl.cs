@@ -7,18 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 using System.Windows.Forms.Design;
 
 namespace OP_VitalsPL
 {
-    public partial class UILogin : Form
+    public partial class UI_NulpunktsjusteringsFejl : Form
     {
-        public UILogin()
+        public UI_NulpunktsjusteringsFejl()
         {
             InitializeComponent();
         }
 
-        private void UILogin_Load(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UI_NulpunktsjusteringsFejl_Load(object sender, EventArgs e)
         {
 
         }
