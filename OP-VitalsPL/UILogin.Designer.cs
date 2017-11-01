@@ -28,69 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonlogin = new System.Windows.Forms.Button();
-            this.textBoxID = new System.Windows.Forms.TextBox();
-            this.textBoxCodeWord = new System.Windows.Forms.TextBox();
-            this.EmployeeID = new System.Windows.Forms.Label();
-            this.code = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.EmployeeIDTextBox = new System.Windows.Forms.TextBox();
+            this.PasswordTextBox = new System.Windows.Forms.TextBox();
+            this.LoginButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // buttonlogin
+            // label1
             // 
-            this.buttonlogin.Location = new System.Drawing.Point(112, 143);
-            this.buttonlogin.Name = "buttonlogin";
-            this.buttonlogin.Size = new System.Drawing.Size(81, 27);
-            this.buttonlogin.TabIndex = 0;
-            this.buttonlogin.Text = "Login";
-            this.buttonlogin.UseVisualStyleBackColor = true;
-            this.buttonlogin.Click += new System.EventHandler(this.button1_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(74, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Medarbejder ID";
             // 
-            // textBoxID
+            // label2
             // 
-            this.textBoxID.Location = new System.Drawing.Point(112, 35);
-            this.textBoxID.Name = "textBoxID";
-            this.textBoxID.Size = new System.Drawing.Size(100, 20);
-            this.textBoxID.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(107, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Kodeord";
             // 
-            // textBoxCodeWord
+            // EmployeeIDTextBox
             // 
-            this.textBoxCodeWord.Location = new System.Drawing.Point(112, 77);
-            this.textBoxCodeWord.Name = "textBoxCodeWord";
-            this.textBoxCodeWord.PasswordChar = '*';
-            this.textBoxCodeWord.Size = new System.Drawing.Size(100, 20);
-            this.textBoxCodeWord.TabIndex = 2;
+            this.EmployeeIDTextBox.Location = new System.Drawing.Point(181, 40);
+            this.EmployeeIDTextBox.Name = "EmployeeIDTextBox";
+            this.EmployeeIDTextBox.Size = new System.Drawing.Size(100, 20);
+            this.EmployeeIDTextBox.TabIndex = 3;
             // 
-            // EmployeeID
+            // PasswordTextBox
             // 
-            this.EmployeeID.AutoSize = true;
-            this.EmployeeID.Location = new System.Drawing.Point(26, 38);
-            this.EmployeeID.Name = "EmployeeID";
-            this.EmployeeID.Size = new System.Drawing.Size(77, 13);
-            this.EmployeeID.TabIndex = 3;
-            this.EmployeeID.Text = "Medarbejder id";
-            this.EmployeeID.Click += new System.EventHandler(this.label1_Click);
+            this.PasswordTextBox.Location = new System.Drawing.Point(181, 80);
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.Size = new System.Drawing.Size(100, 20);
+            this.PasswordTextBox.TabIndex = 4;
             // 
-            // code
+            // LoginButton
             // 
-            this.code.AutoSize = true;
-            this.code.Location = new System.Drawing.Point(29, 77);
-            this.code.Name = "code";
-            this.code.Size = new System.Drawing.Size(47, 13);
-            this.code.TabIndex = 4;
-            this.code.Text = "Kodeord";
+            this.LoginButton.Location = new System.Drawing.Point(154, 139);
+            this.LoginButton.Name = "LoginButton";
+            this.LoginButton.Size = new System.Drawing.Size(75, 23);
+            this.LoginButton.TabIndex = 5;
+            this.LoginButton.Text = "Login";
+            this.LoginButton.UseVisualStyleBackColor = true;
             // 
             // UILogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(291, 218);
-            this.Controls.Add(this.code);
-            this.Controls.Add(this.EmployeeID);
-            this.Controls.Add(this.textBoxCodeWord);
-            this.Controls.Add(this.textBoxID);
-            this.Controls.Add(this.buttonlogin);
+            this.ClientSize = new System.Drawing.Size(439, 261);
+            this.Controls.Add(this.LoginButton);
+            this.Controls.Add(this.PasswordTextBox);
+            this.Controls.Add(this.EmployeeIDTextBox);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Name = "UILogin";
-            this.Text = "Login";
+            this.Text = "UILogin";
+            this.Load += new System.EventHandler(this.UILogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,10 +96,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonlogin;
-        private System.Windows.Forms.TextBox textBoxID;
-        private System.Windows.Forms.TextBox textBoxCodeWord;
-        private System.Windows.Forms.Label EmployeeID;
-        private System.Windows.Forms.Label code;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox EmployeeIDTextBox;
+        private System.Windows.Forms.TextBox PasswordTextBox;
+        private System.Windows.Forms.Button LoginButton;
     }
 }
