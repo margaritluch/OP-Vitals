@@ -29,7 +29,7 @@ namespace OP_VitalsDAL
         public bool ValiderLogin(EmployeeDTO Employee)
         {
             bool result_ = false;
-            cmd = new SqlCommand("select * from EmployeeDatabase where EmployeeID =" + Employee.EmployeeID_ + "and Password =" + Employee.Password_ , OpenConnection);
+            cmd = new SqlCommand("select * from EmployeeDatabase where EmployeeID =" + Employee.EmployeeID_ + "and PassWord =" + Employee.Password_ , OpenConnection);
 
             rdr = cmd.ExecuteReader(); //iterator løber det igennem
 
@@ -38,9 +38,9 @@ namespace OP_VitalsDAL
                 result_ = true;
                 //indsæt data fra database
 
-                Employee.FirstName_ = rdr.GetString(1); //rdr["FirstName"]
-                Employee.LastName_ = rdr.GetString(2); // rdr["LastName"]
-                Employee.Profession_ = rdr.GetString(3);
+                Employee.FirstName_ = rdr.GetString(3); //rdr["FirstName"]
+                Employee.LastName_ = rdr.GetString(4); // rdr["LastName"]
+                Employee.Profession_ = rdr.GetString(5);
                 //Tjek at det er de rigtige værdier der indlæses
             }
             

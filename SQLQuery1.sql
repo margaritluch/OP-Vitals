@@ -1,0 +1,1 @@
+﻿CREATE TABLE[EmployeeDatabase]([EmployeeID] NCHAR(6) NOT NULL PRIMARY KEY,[PassWord] NVARCHAR(10),[EmployeeFirstName] NVARCHAR(10),[EmployeeLastName] NVARCHAR(10),[Profession] NVARCHAR(10));
