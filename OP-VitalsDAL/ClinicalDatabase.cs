@@ -11,7 +11,7 @@ using System.IO;
 
 namespace OP_VitalsDAL
 {
-    class KliniskDatabase
+    class ClinicalDatabase
     {
         private SqlDataReader rdr; // Datalæseren
         private SqlCommand cmd;
@@ -43,11 +43,11 @@ namespace OP_VitalsDAL
             string zipPath = startPath + ".zip";
             ZipFile.CreateFromDirectory(startPath, zipPath);
         }
-        public bool SaveMeasurement(EmployeeDTO employee, OperationDTO operation,PatientDTO patient,DAQSettingsDTO DAQ,BPDataSequenceDTO dataSequence,TransdusorDTO transdusor)
+        public bool SaveMeasurement(EmployeeDTO employee, OperationDTO operation, PatientDTO patient, DAQSettingsDTO DAQ, BPDataSequenceDTO dataSequence, TransdusorDTO transdusor)
         {
             long OperationID_;
-            int BPdataID_;
             bool saved = true;
+            int BPdataID_;
             string zipfolderpathdata = @"C:\Users\Maiken Guldberg\Documents\3. Semester\Semesterprojekt\OP-Vitals\Test.zip";
             string zipfolderpathComment = @"C:\Users\Maiken Guldberg\Documents\3. Semester\Semesterprojekt\OP-Vitals\Test.zip";
             string insertStringParamOperation = @"INSERT INTO Operation(OPNurseFirstName, OPNurseLastName, OPNurseIDNumber, NumberOFAlarms, Comments, DurationOperation_hour, DurationOperation_min, DurationOperation_sec, PatientCPR, Complikations)
@@ -60,7 +60,7 @@ namespace OP_VitalsDAL
                 cmd.Parameters.AddWithValue("@OPNurseLastName", employee.FirstName_);
                 cmd.Parameters.AddWithValue("@OPNurseIDNumber", employee.EmployeeID_);
                 cmd.Parameters.AddWithValue("@NumberOFAlarms", operation.NumberOfAlarms_);
-                cmd.Parameters.AddWithValue("@Comments",Comment);
+                cmd.Parameters.AddWithValue("@Comments", Comment); //overvej om kommentarer skal gemmes som en fil
                 cmd.Parameters.AddWithValue("@DurationOperation_hour", operation.DurationOperation_hour_);
                 cmd.Parameters.AddWithValue("@DurationOperation_min", operation.DurationOperation_min_);
                 cmd.Parameters.AddWithValue("@DurationOperation_sec", operation.DurationOperation_sec_);
@@ -68,13 +68,13 @@ namespace OP_VitalsDAL
                 cmd.Parameters.AddWithValue("@Complikations", operation.Complikations_);
 
                 OperationID_ = (long)cmd.ExecuteScalar();
-                
+
             }
 
             string insertStringParamBPDataSequence = @"INSERT INTO BPDataSequence( Raw_Data, Samplerate_hz, Interval_sec, NumberOfSequences, SequenceDuration_sec, Data_Format, Bin_or_Text, Measurement_Format_Type, ConversionConstant_mmhgprmV, ZeroPoint_mmhg, Transdusor_Identification, OperationID )
                                         OUTPUT INSERTED.BPdataID 
                                         VALUES(@Raw_Data,@Samplerate_hz, @Interval_sec, @NumberOfSequences, @SequenceDuration_sec, @Data_Format, @Bin_or_Text, @Measurement_Format_Type,@ConversionConstant_mmhgprmV,@ZeroPoint_mmhg,@Transdusor_Identification,@OperationID)";
-            
+
             byte[] Raw_Data = File.ReadAllBytes(zipfolderpathdata);
 
             using (SqlCommand cmd = new SqlCommand(insertStringParamBPDataSequence, OpenConnection))
@@ -94,7 +94,7 @@ namespace OP_VitalsDAL
 
                 BPdataID_ = (int)cmd.ExecuteScalar();
             }
-                return saved;
+            return saved;
         }
 
     }

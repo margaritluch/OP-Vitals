@@ -8,7 +8,7 @@ using DTO;
 
 namespace OP_VitalsDAL
 {
-    class MedarbejderDatabase
+    public class EmployeeDatabase
     {
         private SqlDataReader rdr; // Datalæseren
         private SqlCommand cmd;
@@ -26,24 +26,24 @@ namespace OP_VitalsDAL
             }
         }
 
-        public bool ValiderLogin(EmployeeDTO Employee)
+        public bool ValidateLogin(EmployeeDTO Employee)
         {
             bool result_ = false;
-            cmd = new SqlCommand("select * from EmployeeDatabase where EmployeeID =" + Employee.EmployeeID_ + "and PassWord =" + Employee.Password_ , OpenConnection);
+            cmd = new SqlCommand("select EmployeeFirstName, EmployeeLastName, Profession, PassWord from EmployeeDatabase where EmployeeID =" + Employee.EmployeeID_, OpenConnection);
 
             rdr = cmd.ExecuteReader(); //iterator løber det igennem
 
-            if (rdr.Read() == true)
+            if (rdr.Read() == true && string.Equals(rdr["PassWord"].ToString(), Employee.Password_))
             {
                 result_ = true;
                 //indsæt data fra database
 
-                Employee.FirstName_ = rdr.GetString(3); //rdr["FirstName"]
-                Employee.LastName_ = rdr.GetString(4); // rdr["LastName"]
-                Employee.Profession_ = rdr.GetString(5);
+                Employee.FirstName_ = rdr["EmployeeFirstName"].ToString(); //rdr["FirstName"]
+                Employee.LastName_ = rdr["EmployeeLastName"].ToString(); // rdr["LastName"]
+                Employee.Profession_ = rdr["Profession"].ToString();
                 //Tjek at det er de rigtige værdier der indlæses
             }
-            
+
             OpenConnection.Close();
             return result_;
         }

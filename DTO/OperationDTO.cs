@@ -17,6 +17,8 @@ namespace DTO
         public double ConversionConstant_ { get; set; }
         public double ZeroPoint_ { get; set; }
 
+        public DateTime StartTime_ { get; set; }
+
         public OperationDTO()
         {
             NumberOfAlarms_ = 0;
@@ -27,6 +29,7 @@ namespace DTO
             Complikations_ = 0;
             ConversionConstant_ = 25; //tjek værdierne 
             ZeroPoint_ = 10; //tjek værdierne
+            StartTime_ = DateTime.Now;
         }
 
     }
