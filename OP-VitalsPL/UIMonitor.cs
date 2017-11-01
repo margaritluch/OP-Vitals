@@ -7,18 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 using System.Windows.Forms.Design;
 
 namespace OP_VitalsPL
 {
-    public partial class UILogin : Form
+    public partial class UIMonitor : Form
     {
-        public UILogin()
+        public UIMonitor()
         {
             InitializeComponent();
         }
 
-        private void UILogin_Load(object sender, EventArgs e)
+        private void MonitorChart_Click(object sender, EventArgs e)
         {
 
         }

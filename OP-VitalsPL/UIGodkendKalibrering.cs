@@ -7,20 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 using System.Windows.Forms.Design;
 
 namespace OP_VitalsPL
 {
-    public partial class UILogin : Form
+    public partial class UIGodkendKalibrering : Form
     {
-        public UILogin()
+        public UIGodkendKalibrering()
         {
             InitializeComponent();
-        }
-
-        private void UILogin_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
