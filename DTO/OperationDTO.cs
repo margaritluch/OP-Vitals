@@ -19,6 +19,8 @@ namespace DTO
 
         public DateTime StartTime_ { get; set; }
 
+        public string PathOperationFolder_ { get; set; }
+
         public OperationDTO()
         {
             NumberOfAlarms_ = 0;
@@ -30,6 +32,7 @@ namespace DTO
             ConversionConstant_ = 25; //tjek værdierne 
             ZeroPoint_ = 10; //tjek værdierne
             StartTime_ = DateTime.Now;
+            PathOperationFolder_ = "";
         }
 
     }
