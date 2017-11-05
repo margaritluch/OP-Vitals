@@ -45,6 +45,7 @@
     <Compile Include="ClinicalDatabase.cs" />
     <Compile Include="EmployeeDatabase.cs" />
     <Compile Include="FileManager.cs" />
+    <Compile Include="ParameterBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

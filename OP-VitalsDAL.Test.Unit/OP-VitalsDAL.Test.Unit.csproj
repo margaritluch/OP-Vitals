@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ClinicalDatabaseUnitTest.cs" />
     <Compile Include="EmployeeDatabaseUnitTest.cs" />
+    <Compile Include="Fakes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +55,10 @@
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{2f66d89c-da7e-4628-9f16-7530845ab141}</Project>
       <Name>DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{9455f8fa-24ec-42c5-a052-c7114f530460}</Project>
+      <Name>Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\OP-VitalsDAL\OP-VitalsDAL.csproj">
       <Project>{d746dc17-5ff0-4cad-85ca-6cf08b1e38a4}</Project>

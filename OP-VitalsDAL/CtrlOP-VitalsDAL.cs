@@ -10,14 +10,7 @@ namespace OP_VitalsDAL
 {
     public class CtrlOPVitalsDAL:iOPVitalsDAL
     {
-        private ClinicalDatabase myKliniskDatabase;
-        private EmployeeDatabase myMedarbejderDatabase;
-
-        public bool ValiderLogin(int id, string kodeord)
-        {
-
-            return myMedarbejderDatabase.ValiderLogin(id, kodeord);
-        }
+        
     }
 
 }

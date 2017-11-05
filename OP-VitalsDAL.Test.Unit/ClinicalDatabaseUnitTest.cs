@@ -4,11 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using DTO;
 
 namespace OP_VitalsDAL.Test.Unit
 {
     [TestFixture]
-    class ClinicalDatabaseUnitTest
+    public class ClinicalDatabaseUnitTest
     {
+        [SetUp]
+        public void SetUp()
+        {
+            
+        }
+
+        [Test]
+        public void SaveMeasurement_InsertEmployee_AddEmployeeWasCalled()
+        {
+            var parameterBuilder = new MuckParameterBuilder();
+            var uut = new ClinicalDatabase(parameterBuilder);
+            EmployeeDTO employee = new EmployeeDTO();
+            OperationDTO operation = new OperationDTO();
+            PatientDTO patient = new PatientDTO();
+            DAQSettingsDTO daq = new DAQSettingsDTO();
+            BPDataSequenceDTO bpDataSequence = new BPDataSequenceDTO();
+            TransdusorDTO transdusor = new TransdusorDTO();
+
+            uut.SaveMeasurement(employee, operation, patient, daq, bpDataSequence, transdusor);
+
+            Assert.That(parameterBuilder.WasAddEmployeeCalled,Is.EqualTo(true));
+        }
     }
 }

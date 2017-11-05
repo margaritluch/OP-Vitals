@@ -159,5 +159,12 @@ namespace OP_VitalsDAL
             return latestfile;
         }
 
+
+        //Denne metode benyttes til at tælle antal filer i en mappe
+        public int CountFilesInFolder(string pathFolder)
+        {
+            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(pathFolder);
+            return dir.GetFiles().Length;
+        }
     }
 }
