@@ -43,11 +43,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalibrationUnitTests.cs" />
     <Compile Include="CtrlOPVitalsBLUnitTests.cs" />
+    <Compile Include="Fakes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RsquaredCalculatorUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{2f66d89c-da7e-4628-9f16-7530845ab141}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{9455f8fa-24ec-42c5-a052-c7114f530460}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OP-VitalsBL\OP-VitalsBL.csproj">
+      <Project>{b4e8a3e5-69c6-467b-a7a8-f9ab2cb1fb88}</Project>
+      <Name>OP-VitalsBL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,21 +18,21 @@ namespace OP_VitalsBL
             this.currentDal = currentDal;
         }
         
-        public bool LoginMetode(int id, string kodeord)
-        {
-            return currentDal.ValiderLogin(id,kodeord);
-        }
+        //public bool LoginMetode(int id, string kodeord)
+        //{
+        //    return currentDal.ValiderLogin(id,kodeord);
+        //}
 
-        //Denne metoder benyttes til at finde ud af om vedkommende der logger ind er operationssygeplejerske.
-        public bool IsOPNurse()
-        {
-            string profession = "OPSygeplejerske"; //
-            bool result = false;
-            if(string.Equals(profession,employee.Profession_)==true)
-            {
-                result = true;
-            }
-            return result;
-        }
+        ////Denne metoder benyttes til at finde ud af om vedkommende der logger ind er operationssygeplejerske.
+        //public bool IsOPNurse()
+        //{
+        //    string profession = "OPSygeplejerske"; //
+        //    bool result = false;
+        //    if(string.Equals(profession,employee.Profession_)==true)
+        //    {
+        //        result = true;
+        //    }
+        //    return result;
+        //}
     }
 }

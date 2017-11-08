@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using DTO;
+using OP_VitalsDAL;
 
 namespace OP_VitalsDAL.Test.Unit
 {

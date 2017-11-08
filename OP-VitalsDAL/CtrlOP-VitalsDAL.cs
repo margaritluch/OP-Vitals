@@ -10,7 +10,18 @@ namespace OP_VitalsDAL
 {
     public class CtrlOPVitalsDAL:iOPVitalsDAL
     {
-        
+        private FileManager fileManager;
+        private string path;
+
+        public CtrlOPVitalsDAL()
+        {
+            fileManager = new FileManager();
+        }
+
+        public void SaveCalibration(double value, string technicianID)
+        {
+            fileManager.CreateCalibrationFile(value,technicianID, out path);
+        }
     }
 
 }

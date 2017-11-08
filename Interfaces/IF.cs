@@ -7,16 +7,23 @@ using System.Threading.Tasks;
 using DTO;
 
 
+
 namespace Interfaces
 {
     public interface iOPVitalsDAL
     {
-        
+        void SaveCalibration(double value, string technicianID);
     }
 
     public interface iOPVitalsBL
     {
-        
+        void AddToCalibrationlist(double pressure);
+        void LinearRegression(List<CalibrationPointDTO> list);
+        List<CalibrationPointDTO> GetCalibrationList();
+        double GetYintercept_();
+        double GetRsquared_();
+        double GetSlope_();
+        void SaveCalibration();
     }
 
     public interface iOPVitalsPL
@@ -35,5 +42,13 @@ namespace Interfaces
         void AddTransdusor(SqlCommand cmd, TransdusorDTO transdusor);
         void AddDataSequence(SqlCommand cmd, BPDataSequenceDTO dataSequence);
 
+    }
+
+    public interface iRsquaredCalculator
+    {
+        void LinearRegressionCalc(double[] xVals, double[] yVals,
+            int inclusiveStart, int exclusiveEnd,
+            out double rsquared, out double yintercept,
+            out double slope);
     }
 }
