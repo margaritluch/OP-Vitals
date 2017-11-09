@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncDaq.cs" />
     <Compile Include="CtrlOP-VitalsDAL.cs" />
     <Compile Include="ClinicalDatabase.cs" />
     <Compile Include="EmployeeDatabase.cs" />
