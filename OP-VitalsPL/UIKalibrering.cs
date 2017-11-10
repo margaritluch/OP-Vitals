@@ -30,15 +30,7 @@ namespace OP_VitalsPL
             PointDeletet = false;
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void AddMButton_Click(object sender, EventArgs e)
         {
@@ -62,6 +54,7 @@ namespace OP_VitalsPL
 
         private void DrawChartPoints()
         {
+            CalibrationChart.Series["Punkter"].Points.Clear();
             for (int i = 0; i < currentBl.GetCalibrationList().Count; i++)
             {
                 CalibrationChart.Series["Punkter"].Points.AddXY(currentBl.GetCalibrationList()[i].Voltage_,
@@ -71,8 +64,9 @@ namespace OP_VitalsPL
 
         private void DrawLinearRegression()
         {
+            CalibrationChart.Series["LineærRegression"].Points.Clear();
             currentBl.LinearRegression(currentBl.GetCalibrationList());
-            for (int i = 0; i < 30; i++) //ret 30 til. Skal være max spændingsværdi
+            for (int i = 0; i < 5; i++) //ret 30 til. Skal være max spændingsværdi
             {
                 CalibrationChart.Series["LineærRegression"].Points
                     .AddXY(i, i * currentBl.GetSlope_() + currentBl.GetYintercept_());

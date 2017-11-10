@@ -13,11 +13,9 @@ namespace Interfaces
     public interface iOPVitalsDAL
     {
         void SaveCalibration(double value, string technicianID);
-        void StartMeasurement();
 
-        void StopMeasurement();
-
-        List<double> GetChartList();
+        void StartDaq();
+        double GetZeroPoint();
 
         bool ValidateLogin(EmployeeDTO Employee);
     }
@@ -31,11 +29,9 @@ namespace Interfaces
         double GetRsquared_();
         double GetSlope_();
         void SaveCalibration();
-        void StartMeasurement();
+        void InitiateDaqFromBL();
 
-        void StopMeasurement();
-
-        List<double> GetChartList();
+        double GetZeroPointFromBL();
 
         bool ValidateLogin(EmployeeDTO Employee);
         EmployeeDTO employee { get; set; }

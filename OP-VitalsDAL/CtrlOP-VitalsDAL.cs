@@ -13,35 +13,32 @@ namespace OP_VitalsDAL
     {
         private FileManager fileManager;
         private string path;
-        private AsyncDaq DAQ;
+        private AsyncDaq DaqAsync;
         private EmployeeDatabase employee;
 
         public CtrlOPVitalsDAL()
         {
             fileManager = new FileManager();
             employee = new EmployeeDatabase();
+            DaqAsync = new AsyncDaq();
         }
 
-        public List<double> GetChartList()
-        {
-            return DAQ.getChartList;
-        }
+        
 
         public void SaveCalibration(double value, string technicianID)
         {
             fileManager.CreateCalibrationFile(value,technicianID, out path);
         }
 
-        public void StartMeasurement()
+        public void StartDaq()
         {
-            DAQ.StartMeasurement();
+            DaqAsync.InitiateAsyncDaq();
         }
 
-        public void StopMeasurement()
+        public double GetZeroPoint()
         {
-            DAQ.StopMeasurement();
+            return DaqAsync.GetDataPointZero();
         }
-
         public bool ValidateLogin(EmployeeDTO Employee)
         {
             return employee.ValidateLogin(Employee);

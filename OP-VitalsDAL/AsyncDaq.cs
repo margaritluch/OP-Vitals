@@ -23,26 +23,25 @@ namespace OP_VitalsDAL
         private List<double> dataList;
         private List<double> chartList;
         private List<double> avgList;
+        private List<double> zeroPoint;
+        private double zeroDouble;
         private double avg;
 
         public List<double> getDataList { get; }
         public List<double> getChartList { get; }
 
-        public void StartMeasurement()
+        public void InitiateAsyncDaq()
         {
             if (runningTask == null)
             {
                 try
                 {
-                    dataList = new List<double>();
-                    chartList = new List<double>();
-                    avgList = new List<double>();
                     // Create a new task
                     myTask = new NationalInstruments.DAQmx.Task();
 
                     // Create a virtual channel
-                    myTask.AIChannels.CreateVoltageChannel("Dev1 / ai0", "",
-                        (AITerminalConfiguration) (-1), -5, 5, AIVoltageUnits.Volts);
+                    myTask.AIChannels.CreateVoltageChannel("Dev1/ai0", "",
+                        (AITerminalConfiguration)(-1), -5, 5, AIVoltageUnits.Volts);
 
                     // Configure the timing parameters
                     myTask.Timing.ConfigureSampleClock("", 1000, // 1000 = frekvensen der læses med i hz
@@ -60,10 +59,6 @@ namespace OP_VitalsDAL
                     analogInReader.SynchronizeCallbacks = true;
                     analogInReader.BeginReadWaveform(100,
                         analogCallback, myTask);
-
-                    
-
-                    DataInToList();
                 }
                 catch (DaqException exception)
                 {
@@ -115,18 +110,26 @@ namespace OP_VitalsDAL
 
         private void SortDataToList()
         {
+
             avg = 0;
-            for (int i = 0; i < dataList.Count; i = i+10)
+            for (int i = 0; i < dataList.Count; i = i + 10)
             {
-                avg = (chartList.GetRange(i,10).Average());
+                avg = (chartList.GetRange(i, 10).Average());
                 avgList.Add(avg);
             }
         }
 
-        //private void StartData()
-        //{
-        //    dataInThread = new Thread(new ThreadStart());
-        //}
-
+        public double GetDataPointZero()
+        {
+            zeroPoint = new List<double>();
+            foreach (var d in analogInReader.ReadMultiSample(50))
+            {
+                zeroPoint.Add(d);
+            }
+            zeroDouble = zeroPoint.Average();
+            return zeroDouble;
+        }
     }
 }
+
+

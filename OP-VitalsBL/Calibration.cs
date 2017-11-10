@@ -13,7 +13,7 @@ namespace OP_VitalsBL
     {
         private iRsquaredCalculator rsquaredCalculator_;
         public List<CalibrationPointDTO> calibrationlist_ { get; set; }
-        private Random rand;
+        
 
         public Calibration(iRsquaredCalculator rsquaredCalculator)
         {
@@ -21,17 +21,17 @@ namespace OP_VitalsBL
             xval1 = new List<double>();
             yval1 = new List<double>();
             rsquaredCalculator_ = rsquaredCalculator;
-            rand = new Random(200);
+           
         }
 
-        public void AddMeasurePoint(double pressure)
+        public void AddMeasurePoint(double voltage, double pressure)
         {
-            AddToList(pressure);
+            AddToList(voltage,pressure);
         }
-        private void AddToList(double pressure)
+        private void AddToList(double voltage, double pressure)
         {
              //i stedet for random indlæses der spændingsværdier fra DAQ'en
-            CalibrationPointDTO point = new CalibrationPointDTO(rand.Next(1,30),pressure);
+            CalibrationPointDTO point = new CalibrationPointDTO(voltage,pressure);
             calibrationlist_.Add(point);
         }
         private List<double> xval1;

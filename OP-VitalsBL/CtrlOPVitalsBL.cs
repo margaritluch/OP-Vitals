@@ -23,11 +23,12 @@ namespace OP_VitalsBL
             calibration = new Calibration(rsquaredCalculator);
             daqSettings = new DAQSettingsDTO();
             employee = new EmployeeDTO();
+            this.currentDal.StartDaq();
         }
 
         public void AddToCalibrationlist(double pressure)
         {
-            calibration.AddMeasurePoint(pressure);
+            calibration.AddMeasurePoint(currentDal.GetZeroPoint(),pressure);
         }
 
         public void LinearRegression(List<CalibrationPointDTO> list)
@@ -61,24 +62,21 @@ namespace OP_VitalsBL
             currentDal.SaveCalibration(calibration.Slope_,employee.EmployeeID_);
         }
 
-        public void StartMeasurement()
-        {
-            currentDal.StartMeasurement();
-        }
-
-        public void StopMeasurement()
-        {
-            currentDal.StopMeasurement();
-        }
-
-        public List<double> GetChartList()
-        {
-            return currentDal.GetChartList();
-        }
+        
 
         public bool ValidateLogin(EmployeeDTO Employee)
         {
             return currentDal.ValidateLogin(Employee);
+        }
+
+        public void InitiateDaqFromBL()
+        {
+            currentDal.StartDaq();
+        }
+
+        public double GetZeroPointFromBL()
+        {
+            return currentDal.GetZeroPoint();
         }
     }
 }
