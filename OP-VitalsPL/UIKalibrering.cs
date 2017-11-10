@@ -136,7 +136,7 @@ namespace OP_VitalsPL
             {
                 currentBl.SaveCalibration();
                this.Hide();
-                login = new UILogin();
+                login = new UILogin(currentBl);
                 login.Show();
 
             }

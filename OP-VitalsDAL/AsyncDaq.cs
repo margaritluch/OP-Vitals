@@ -8,7 +8,7 @@ using System.ComponentModel;
 using NationalInstruments;
 using NationalInstruments.DAQmx;
 
-namespace RealTimeChartTest
+namespace OP_VitalsDAL
 {
     class AsyncDaq
     {
@@ -60,6 +60,9 @@ namespace RealTimeChartTest
                     analogInReader.SynchronizeCallbacks = true;
                     analogInReader.BeginReadWaveform(100,
                         analogCallback, myTask);
+
+                    
+
                     DataInToList();
                 }
                 catch (DaqException exception)
@@ -119,6 +122,11 @@ namespace RealTimeChartTest
                 avgList.Add(avg);
             }
         }
+
+        //private void StartData()
+        //{
+        //    dataInThread = new Thread(new ThreadStart());
+        //}
 
     }
 }

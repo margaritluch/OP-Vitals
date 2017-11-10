@@ -76,7 +76,6 @@
             this.chart1.Size = new System.Drawing.Size(402, 276);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // label2
             // 
@@ -162,7 +161,6 @@
             this.KontrolLogOutButton.TabIndex = 12;
             this.KontrolLogOutButton.Text = "Log  ud";
             this.KontrolLogOutButton.UseVisualStyleBackColor = true;
-            this.KontrolLogOutButton.Click += new System.EventHandler(this.KontrolLogOut_Click);
             // 
             // FilterOff
             // 
@@ -194,6 +192,7 @@
             this.StopKontrolButton.TabIndex = 16;
             this.StopKontrolButton.Text = "Stop";
             this.StopKontrolButton.UseVisualStyleBackColor = true;
+            this.StopKontrolButton.Click += new System.EventHandler(this.StopKontrolButton_Click);
             // 
             // StartKontrolButton
             // 
@@ -203,6 +202,7 @@
             this.StartKontrolButton.TabIndex = 17;
             this.StartKontrolButton.Text = "Start";
             this.StartKontrolButton.UseVisualStyleBackColor = true;
+            this.StartKontrolButton.Click += new System.EventHandler(this.StartKontrolButton_Click);
             // 
             // groupBox1
             // 
@@ -241,7 +241,6 @@
             this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Filter indstillinger";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // label1
             // 
@@ -297,7 +296,6 @@
             this.Controls.Add(this.chart1);
             this.Name = "UIKontrolform";
             this.Text = "UIKontrolform";
-            this.Load += new System.EventHandler(this.UIKontrolform_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

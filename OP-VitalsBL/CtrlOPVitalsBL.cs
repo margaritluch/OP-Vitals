@@ -13,7 +13,7 @@ namespace OP_VitalsBL
         private iOPVitalsDAL currentDal;
         private Calibration calibration;
         private DAQSettingsDTO daqSettings;
-        private EmployeeDTO employee;
+        public  EmployeeDTO employee { get; set; }
         private RsquaredCalculator rsquaredCalculator;
 
         public CtrlOPVitalsBL(iOPVitalsDAL currentDal)
@@ -59,6 +59,26 @@ namespace OP_VitalsBL
         public void SaveCalibration()
         {
             currentDal.SaveCalibration(calibration.Slope_,employee.EmployeeID_);
+        }
+
+        public void StartMeasurement()
+        {
+            currentDal.StartMeasurement();
+        }
+
+        public void StopMeasurement()
+        {
+            currentDal.StopMeasurement();
+        }
+
+        public List<double> GetChartList()
+        {
+            return currentDal.GetChartList();
+        }
+
+        public bool ValidateLogin(EmployeeDTO Employee)
+        {
+            return currentDal.ValidateLogin(Employee);
         }
     }
 }
