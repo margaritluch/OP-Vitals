@@ -30,6 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NationalInstruments.Common, Version=13.0.40.190, Culture=neutral, PublicKeyToken=dc6ad606294fc298, processorArchitecture=MSIL" />
+    <Reference Include="NationalInstruments.DAQmx, Version=14.1.45.15, Culture=neutral, PublicKeyToken=4febd62461bf11a4, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -41,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncDaq.cs" />
     <Compile Include="CtrlOP-VitalsDAL.cs" />
-    <Compile Include="KliniskDatabase.cs" />
-    <Compile Include="MedarbejderDatabase.cs" />
+    <Compile Include="ClinicalDatabase.cs" />
+    <Compile Include="EmployeeDatabase.cs" />
+    <Compile Include="FileManager.cs" />
+    <Compile Include="ParameterBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

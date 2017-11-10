@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BPDataSequence.cs" />
+    <Compile Include="CalibrationPointDTO.cs" />
     <Compile Include="DAQSettingsDTO.cs" />
     <Compile Include="EmployeeDTO.cs" />
     <Compile Include="OperationDTO.cs" />
