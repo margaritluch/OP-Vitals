@@ -40,7 +40,7 @@ namespace OP_VitalsDAL
                     myTask = new NationalInstruments.DAQmx.Task();
 
                     // Create a virtual channel
-                    myTask.AIChannels.CreateVoltageChannel("Dev1/ai0", "",
+                    myTask.AIChannels.CreateVoltageChannel("Dev2/ai0", "",
                         (AITerminalConfiguration)(-1), -5, 5, AIVoltageUnits.Volts);
 
                     // Configure the timing parameters
