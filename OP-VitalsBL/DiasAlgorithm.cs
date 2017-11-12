@@ -44,7 +44,7 @@ namespace OP_VitalsBL
         public List<ChartValuesDTO> CalcSystolic(List<double> list)
         {
             int countAhead = 1;
-            double top = 0;
+            double mintop = 0;
 
             List<ChartValuesDTO> chartValues = new List<ChartValuesDTO>();
 
@@ -54,16 +54,16 @@ namespace OP_VitalsBL
                 // så bliver toppunktet defineret som y-værdien foran index værdien 
                 // Lige så snart vi rammer et toppunt, så er denne if's betingelse
                 //ikke længere opfyldt, og derfor går den videre i koden
-                if (list[i] <= list[countAhead])
+                if (list[i] >= list[countAhead])
                 {
-                    top = list[countAhead];
+                    mintop = list[countAhead];
 
                 }
                 // Denne if loop kører kun, når den rammer et toppunkt,hvilket
                 // er større end toppunktet foran. Herefter gemmes toppunktet i en liste
-                if (top == list[i] && top > list[countAhead])
+                if (mintop == list[i] && mintop < list[countAhead])
                 {
-                    DiastolicValues = new ChartValuesDTO((Convert.ToDouble(i)), top);
+                    DiastolicValues = new ChartValuesDTO((Convert.ToDouble(i)), mintop);
                     chartValues.Add(DiastolicValues);
                 }
 

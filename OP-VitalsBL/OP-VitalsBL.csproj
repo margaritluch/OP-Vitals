@@ -43,6 +43,7 @@
     <Compile Include="Alarm.cs" />
     <Compile Include="CtrlOPVitalsBL.cs" />
     <Compile Include="DiasAlgorithm.cs" />
+    <Compile Include="DigitalFilter.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MeanAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
