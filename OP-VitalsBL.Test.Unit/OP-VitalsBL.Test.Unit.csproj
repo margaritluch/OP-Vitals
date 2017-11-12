@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OP-VitalsBL\OP-VitalsBL.csproj">
+      <Project>{b4e8a3e5-69c6-467b-a7a8-f9ab2cb1fb88}</Project>
+      <Name>OP-VitalsBL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

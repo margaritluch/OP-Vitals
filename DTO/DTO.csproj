@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlarmDTO.cs" />
     <Compile Include="BPDataSequence.cs" />
+    <Compile Include="ChartValuesDTO.cs" />
     <Compile Include="DAQSettingsDTO.cs" />
     <Compile Include="EmployeeDTO.cs" />
     <Compile Include="OperationDTO.cs" />

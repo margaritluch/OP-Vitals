@@ -16,6 +16,9 @@ namespace DTO
         public int Complikations_ { get; set; }
         public double ConversionConstant_ { get; set; }
         public double ZeroPoint_ { get; set; }
+        // tilføjet af Margarit
+        public int Systole { get; set; }
+        public int Diastole { get; set; }
 
         public OperationDTO()
         {

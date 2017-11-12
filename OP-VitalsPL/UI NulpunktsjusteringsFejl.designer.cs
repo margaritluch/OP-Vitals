@@ -59,6 +59,7 @@
             this.CancelButton.TabIndex = 2;
             this.CancelButton.Text = "Annuller";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // UI_NulpunktsjusteringsFejl
             // 
