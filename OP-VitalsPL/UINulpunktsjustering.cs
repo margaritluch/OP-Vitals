@@ -7,21 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Windows.Forms.Design;
-using Interfaces;
 
 namespace OP_VitalsPL
 {
-    public partial class UIMonitor : Form
+    public partial class UINulpunktsjustering : Form
     {
-        private iOPVitalsBL currentBl;
-        public UIMonitor(iOPVitalsBL mybl)
+        public UINulpunktsjustering()
         {
             InitializeComponent();
-            currentBl = mybl;
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
     }
 }

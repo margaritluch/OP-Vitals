@@ -56,7 +56,7 @@
             this.MonitorChart.Size = new System.Drawing.Size(545, 376);
             this.MonitorChart.TabIndex = 0;
             this.MonitorChart.Text = "chart1";
-            this.MonitorChart.Click += new System.EventHandler(this.MonitorChart_Click);
+           
             // 
             // label1
             // 

@@ -9,34 +9,59 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Windows.Forms.Design;
+using Interfaces;
+using System.Threading;
 
 namespace OP_VitalsPL
 {
     public partial class UIKontrolform : Form
     {
-        public UIKontrolform()
+        private iOPVitalsBL currentBl;
+        private Thread ChartThread_;
+        public UIKontrolform(iOPVitalsBL mybl)
         {
+            this.currentBl = mybl;
             InitializeComponent();
         }
 
-        private void UIKontrolform_Load(object sender, EventArgs e)
-        {
+        
 
+        private void StartKontrolButton_Click(object sender, EventArgs e)
+        {
+            currentBl.StartMeasurement();
+            Start();
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
+        private void StopKontrolButton_Click(object sender, EventArgs e)
         {
-
+            currentBl.StopMeasurement();
         }
 
-        private void KontrolLogOut_Click(object sender, EventArgs e)
+        private void Start()
         {
-
+            ChartThread_ = new Thread(new ThreadStart(DrawChart));
+            ChartThread_.IsBackground = true;
+            ChartThread_.Start();
+        }
+        private void DrawChart()
+        {
+            while (true)
+            {
+                if (chart1.IsHandleCreated)
+                {
+                    this.Invoke((MethodInvoker) delegate { UpdateChart(); });
+                }
+                Thread.Sleep(100);
+            }
         }
 
-        private void chart1_Click(object sender, EventArgs e)
+        private void UpdateChart()
         {
-
+            chart1.Series["Series1"].Points.Clear();
+            for (int i = 1; i < currentBl.GetChartList().Count; i++)
+            {
+                chart1.Series["Series1"].Points.AddXY(i, currentBl.GetChartList());
+            }
         }
     }
 }

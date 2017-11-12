@@ -21,6 +21,9 @@ namespace DTO
 
         public List<double> Datalist { get; set; }
 
+        public double ConversionConstant_ { get; set; }
+        public double ZeroPoint_ { get; set; }
+
         public DAQSettingsDTO()
         {
             //besluttes senere
@@ -30,6 +33,8 @@ namespace DTO
             Bin_or_text_ = 'b'; //tjek om det er rigtigt
             Measurement_Format_Type_ = "double";
             Datalist = new List<double>();
+            ConversionConstant_ = 25; //tjek værdierne 
+            ZeroPoint_ = 10; //tjek værdierne
         }
     }
 }

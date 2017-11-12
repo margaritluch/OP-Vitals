@@ -7,17 +7,25 @@ using System.Threading.Tasks;
 using DTO;
 using System.IO.Compression;
 using System.IO;
+using Interfaces;
 
 
 namespace OP_VitalsDAL
 {
-    class KliniskDatabase
+    public class ClinicalDatabase
     {
         private SqlDataReader rdr; // Datalæseren
         private SqlCommand cmd;
         private const String db = "F17ST2ITS2201607660";
-        
+        private iParameterBuilder parameterBuilder_;
 
+        private string commentfile =
+            @"C:\Users\Maiken Guldberg\Documents\3. Semester\Semesterprojekt\OP-Vitals\Filingsystem\Comments.zip";
+
+        public ClinicalDatabase(iParameterBuilder parameterBuilder)
+        {
+            parameterBuilder_ = parameterBuilder;
+        }
         private SqlConnection OpenConnection
         {
             get
@@ -43,58 +51,39 @@ namespace OP_VitalsDAL
             string zipPath = startPath + ".zip";
             ZipFile.CreateFromDirectory(startPath, zipPath);
         }
-        public bool SaveMeasurement(EmployeeDTO employee, OperationDTO operation,PatientDTO patient,DAQSettingsDTO DAQ,BPDataSequenceDTO dataSequence,TransdusorDTO transdusor)
+        public bool SaveMeasurement(EmployeeDTO employee, OperationDTO operation, PatientDTO patient, DAQSettingsDTO DAQ, BPDataSequenceDTO dataSequence, TransdusorDTO transdusor)
         {
             long OperationID_;
-            int BPdataID_;
             bool saved = true;
-            string zipfolderpathdata = @"C:\Users\Maiken Guldberg\Documents\3. Semester\Semesterprojekt\OP-Vitals\Test.zip";
-            string zipfolderpathComment = @"C:\Users\Maiken Guldberg\Documents\3. Semester\Semesterprojekt\OP-Vitals\Test.zip";
+            int BPdataID_;
             string insertStringParamOperation = @"INSERT INTO Operation(OPNurseFirstName, OPNurseLastName, OPNurseIDNumber, NumberOFAlarms, Comments, DurationOperation_hour, DurationOperation_min, DurationOperation_sec, PatientCPR, Complikations)
                                         OUTPUT INSERTED.OperationID
                                         VALUES(@OPNurseFirstName, @OPNurseLastName, @OPNurseIDNumber, @NumberOFAlarms, @Comments, @DurationOperation_hour, @DurationOperation_min, @DurationOperation_sec, @PatientCPR, @Complikations)";
-            byte[] Comment = File.ReadAllBytes(zipfolderpathComment);
+           
             using (SqlCommand cmd = new SqlCommand(insertStringParamOperation, OpenConnection))
             {
-                cmd.Parameters.AddWithValue("@OPNurseFirstName", employee.FirstName_);
-                cmd.Parameters.AddWithValue("@OPNurseLastName", employee.FirstName_);
-                cmd.Parameters.AddWithValue("@OPNurseIDNumber", employee.EmployeeID_);
-                cmd.Parameters.AddWithValue("@NumberOFAlarms", operation.NumberOfAlarms_);
-                cmd.Parameters.AddWithValue("@Comments",Comment);
-                cmd.Parameters.AddWithValue("@DurationOperation_hour", operation.DurationOperation_hour_);
-                cmd.Parameters.AddWithValue("@DurationOperation_min", operation.DurationOperation_min_);
-                cmd.Parameters.AddWithValue("@DurationOperation_sec", operation.DurationOperation_sec_);
-                cmd.Parameters.AddWithValue("@PatientCPR", patient.PatientCPR);
-                cmd.Parameters.AddWithValue("@Complikations", operation.Complikations_);
-
+                parameterBuilder_.AddEmployee(cmd,employee);
+                parameterBuilder_.AddOperation(cmd,operation);
+                parameterBuilder_.AddComments(cmd,commentfile);
+                parameterBuilder_.AddPatient(cmd,patient);
                 OperationID_ = (long)cmd.ExecuteScalar();
-                
             }
 
             string insertStringParamBPDataSequence = @"INSERT INTO BPDataSequence( Raw_Data, Samplerate_hz, Interval_sec, NumberOfSequences, SequenceDuration_sec, Data_Format, Bin_or_Text, Measurement_Format_Type, ConversionConstant_mmhgprmV, ZeroPoint_mmhg, Transdusor_Identification, OperationID )
                                         OUTPUT INSERTED.BPdataID 
                                         VALUES(@Raw_Data,@Samplerate_hz, @Interval_sec, @NumberOfSequences, @SequenceDuration_sec, @Data_Format, @Bin_or_Text, @Measurement_Format_Type,@ConversionConstant_mmhgprmV,@ZeroPoint_mmhg,@Transdusor_Identification,@OperationID)";
-            
-            byte[] Raw_Data = File.ReadAllBytes(zipfolderpathdata);
 
             using (SqlCommand cmd = new SqlCommand(insertStringParamBPDataSequence, OpenConnection))
             {
-                cmd.Parameters.AddWithValue("@Raw_Data", Raw_Data);
-                cmd.Parameters.AddWithValue("@Samplerate_hz", DAQ.SampleRate);
-                cmd.Parameters.AddWithValue("@Interval_sec", CalculateInterval(DAQ.SampleRate, DAQ.Samples));
-                cmd.Parameters.AddWithValue("@NumberOfSequences", dataSequence.NumberOfSequences_);
-                cmd.Parameters.AddWithValue("@SequenceDuration_sec", dataSequence.SequenceDuration_sec_);
-                cmd.Parameters.AddWithValue("@Data_Format", DAQ.Data_Format_);
-                cmd.Parameters.AddWithValue("@Bin_or_Text", DAQ.Bin_or_text_);
-                cmd.Parameters.AddWithValue("@Measurement_Format_Type", DAQ.Data_Format_);
-                cmd.Parameters.AddWithValue("@ConversionConstant_mmhgprmV", operation.ConversionConstant_);
-                cmd.Parameters.AddWithValue("@ZeroPoint_mmhg", operation.ZeroPoint_);
-                cmd.Parameters.AddWithValue("@Transdusor_Identification", transdusor.Transdusor_Identification_);
+                parameterBuilder_.AddRawData(cmd,operation.PathOperationFolder_);
+                parameterBuilder_.AddDAQ(cmd,DAQ);
+                parameterBuilder_.AddDataSequence(cmd,dataSequence);
+                parameterBuilder_.AddTransdusor(cmd,transdusor);
                 cmd.Parameters.AddWithValue("@OperationID", OperationID_);
 
                 BPdataID_ = (int)cmd.ExecuteScalar();
             }
-                return saved;
+            return saved;
         }
 
     }

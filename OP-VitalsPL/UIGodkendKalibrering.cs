@@ -18,5 +18,17 @@ namespace OP_VitalsPL
         {
             InitializeComponent();
         }
+
+        private void CalibrationAccept_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void CalibrationCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }
 }
