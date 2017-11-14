@@ -27,8 +27,8 @@ namespace DTO
         public DAQSettingsDTO()
         {
             //besluttes senere
-            samples_ = 4000;
-            sampleRate_ = 400; 
+           
+            sampleRate_ = 1000; 
             Data_Format_ = "bytearray"; //tjek om det er rigtigt
             Bin_or_text_ = 'b'; //tjek om det er rigtigt
             Measurement_Format_Type_ = "double";
