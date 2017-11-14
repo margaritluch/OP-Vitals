@@ -45,6 +45,7 @@
     <Compile Include="DigitalFilter.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MeanAlgorithm.cs" />
+    <Compile Include="Calibration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
